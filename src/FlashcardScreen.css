@@ -1,0 +1,202 @@
+/* --- FlashcardScreen.css (Tilt + Scale) --- */
+
+/* --- 1. Full Page Wrapper & Layout --- */
+.flashcard-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    font-family: "Poppins", sans-serif;
+    color: #e6eef6;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+/* Back Button */
+.flashcard-container > .back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    color: #e6eef6;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.flashcard-container > .back-btn:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-2px);
+}
+
+/* --- 2. Flashcard Styles --- */
+.flashcard {
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    perspective: 1200px;
+    margin: 60px 0 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+/* Slight scale effect on hover */
+.flashcard:hover {
+    transform: scale(1.03);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    transform-style: preserve-3d;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #1e293b;
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 18px;
+    box-sizing: border-box;
+    color: #e6f8ff;
+    transition: all 0.3s ease;
+}
+
+.card-front {
+    background: rgba(30, 41, 59, 0.9);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.5;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    background: rgba(14, 165, 233, 0.15);
+    border: 2px solid #0ea5e9;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.5;
+    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.5);
+}
+
+/* Scroll inside card if text is too long */
+.card-front p, .card-back p {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+/* Hint Text */
+.hint-text {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #a5f3fc;
+    font-style: italic;
+}
+
+/* --- 3. Flashcard Controls --- */
+.flashcard-controls {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 15px;
+}
+
+.flashcard-controls span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0ea5e9;
+}
+
+.flashcard-controls button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #0ea5e9;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4);
+}
+
+.flashcard-controls button:hover {
+    background: #06b6d4;
+    transform: translateY(-2px);
+}
+
+/* --- 4. Progress Bar --- */
+.flashcard-progress {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #0ea5e9;
+    transition: width 0.3s ease;
+    border-radius: 8px;
+}
+
+/* --- 5. Responsive Adjustments --- */
+@media (max-width: 650px) {
+    .flashcard {
+        height: 350px;
+        max-width: 100%;
+        margin-top: 80px;
+    }
+
+    .card-front p, .card-back p {
+        font-size: 1.2rem;
+    }
+
+    .flashcard-controls {
+        gap: 15px;
+    }
+
+    .flashcard-controls button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .flashcard-container > .back-btn {
+        top: 15px;
+        left: 15px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+}

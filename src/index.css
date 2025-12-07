@@ -1,0 +1,38 @@
+/* RESET — safe, minimal, and doesn't break layouts */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Allow each page/component to control its own layout */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: #0f172a; /* or your AdventureMap background */
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+/* Remove Vite demo styles completely */
+body {
+  display: block;     /* IMPORTANT FIX */
+  place-items: unset; /* remove centering */
+}
+
+/* Links base */
+a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+/* Buttons reset */
+button {
+  font-family: inherit;
+}
+
+/* Optional: smoother rendering */
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
